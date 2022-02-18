@@ -36,7 +36,7 @@ function downloadFile(downloadUrl) {
 export default {
   methods: {
     screenshot() {
-      downloadFile(`http://${document.location.hostname}:3204/screenshot`);
+      downloadFile(`http://${this.$hostname}:3204/screenshot`);
     },
     setVideoScale(mode) {
       (mode);

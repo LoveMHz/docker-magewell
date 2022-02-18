@@ -6,7 +6,7 @@ import JSMpeg from '@cycjimmy/jsmpeg-player';
 
 export default {
   mounted() {
-    new JSMpeg.VideoElement('#videoWrapper', `ws://${document.location.hostname}:3202/`);
+    new JSMpeg.VideoElement('#videoWrapper', `ws://${this.$hostname}:3202/`);
   }
 };
 </script>

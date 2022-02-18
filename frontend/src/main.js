@@ -4,6 +4,8 @@ import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
+Vue.prototype.$hostname = document.location.hostname;
+
 Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
 
