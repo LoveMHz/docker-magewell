@@ -55,8 +55,6 @@ export default {
 .debug-overlay {
   display: block;
   padding: 70px 20px 20px;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: white;
   position: fixed;
   top: 0;
   left: 0;
@@ -65,5 +63,10 @@ export default {
   height: 100%;
   overflow: hidden;
   outline: 0;
+}
+.debug-overlay pre {
+  background-color: rgba(0, 0, 0, 0.9);
+  text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black, 0.05em 0.05em black;
+  padding: 24px;
 }
 </style>
