@@ -3,6 +3,10 @@ FROM ubuntu:18.04
 # Web Interface
 EXPOSE 3200 3202 3204
 
+# TODO: Get Magewell tools
+# docker cp /usr/bin/mwcap-info (DOCKER_ID):/usr/bin/mwcap-info
+# docker cp /usr/local/share/ProCapture (DOCKER_ID):/usr/local/share/ProCapture
+
 # Update
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt -y update && apt -y upgrade

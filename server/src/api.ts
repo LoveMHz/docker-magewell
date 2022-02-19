@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import bodyparser from 'body-parser';
 
 const app = express();
@@ -7,6 +8,11 @@ const port = process.env.PORT || 3204;
 // Middleware
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
+
+// CORS
+app.use(cors({
+    origin: '*'
+}));
 
 function execShellCommand(cmd: any) {
   const exec = require('child_process').exec;
@@ -23,6 +29,11 @@ app.get('/screenshot', async(req, res) => {
   const screenshotPath = `/tmp/magewell_${new Date().toISOString()}.png`;
   await execShellCommand(`ffmpeg -i /dev/video0 -vframes 1 ${screenshotPath}`);
   res.download(screenshotPath);
+});
+
+app.get('/info', async(req, res) => {
+  const output = await execShellCommand(`mwcap-info -i /dev/video0`);
+  res.send(output);
 });
 
 //

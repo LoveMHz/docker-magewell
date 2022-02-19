@@ -17,7 +17,11 @@
           <b-dropdown-item @click="setVideoSource('hdmi')">HDMI</b-dropdown-item>
         </b-nav-item-dropdown>
 
-        <b-nav-item href="#">Settings</b-nav-item>
+        <b-nav-item-dropdown text="Settings" right>
+          <b-dropdown-form>
+            <b-form-checkbox class="text-nowrap" v-model="showDebugOverlay" value="true">Show Debug</b-form-checkbox>
+          </b-dropdown-form>
+        </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
@@ -34,6 +38,11 @@ function downloadFile(downloadUrl) {
 }
 
 export default {
+  data: function() {
+    return {
+      showDebugOverlay: true
+    };
+  },
   methods: {
     screenshot() {
       downloadFile(`http://${this.$hostname}:3204/screenshot`);
@@ -43,6 +52,14 @@ export default {
     },
     setVideoSource(source) {
       (source);
+    }
+  },
+  watch: {
+    '$data': {
+      handler: function() {
+        this.$parent.updateGlobalSettings(this.$data);
+      },
+      deep: true
     }
   }
 };
